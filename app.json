@@ -3,6 +3,7 @@
     "name": "ssna",
     "slug": "ssna",
     "version": "1.0.0",
+    "scheme":"ssna",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

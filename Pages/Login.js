@@ -3,9 +3,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import Colors from '../Shared/Colors'
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
 
 export default function Login() {
+    WebBrowser.maybeCompleteAuthSession();
+    const [request, response, promptAsync] = Google.useAuthRequest({
+        androidClientId: '381135992820-tmnttqbes8m1rmnatkdcodhctuqj3urg.apps.googleusercontent.com',
+        expoClientId:'381135992820-k28slg42gnqred7q6kjb8ca1827vac81.apps.googleusercontent.com'
+       
+      });
     return (
 
         <View>
@@ -23,10 +30,10 @@ export default function Login() {
                         color="white" style={{ marginRight: 10 }} />
                     <Text style={{ color: Colors.white }}>Sign In with Google</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setUserData({
-                    name: 'Rahul Sanap',
+                <TouchableOpacity onPress={() => promptAsync({
+                    name: 'Shahzaib Shafiq',
                     picture: 'https://cdn3d.iconscout.com/3d/premium/thumb/male-customer-call-service-portrait-6760890-5600697.png?f=webp',
-                    email: 'rahul@gmail.com',
+                    email: 'shafiqshahzaib@gmail.com',
                     id: 1
                 })}>
                     <Text>Skip</Text>
